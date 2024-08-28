@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./styles.css">
+        <title>Movies Manager</title>
+        <script src="./app.js"></script>
+    </head>
+
+
+    <body>
+        <form>
+            <label for="movie_name">Entrer le nom du film à enregistrer</label>
+            <input type="text" name="movie_name" id="movie_name">
+            <button onclick="add()" type="submit">OK</button>
+            <!-- <button onclick="readMovies()" type="button">Voir</button> -->
+        </form>
+
+    </body>
+
 </html>
