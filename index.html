@@ -11,12 +11,13 @@
 
 
     <body>
-        <form>
+        <form onsubmit="add();return false">
             <label for="movie_name">Entrer le nom du film à enregistrer</label>
             <input type="text" name="movie_name" id="movie_name">
-            <button onclick="add()" type="submit">OK</button>
-            <!-- <button onclick="readMovies()" type="button">Voir</button> -->
+            <button type="submit">OK</button>
         </form>
+        <button onclick="showElement()">Voir la liste</button>
+        <div id="container"></div>
 
     </body>
 
