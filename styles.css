@@ -1,6 +1,7 @@
-#container [id^=movie-]{
+#container [id^=movie-] {
     margin: 4px 0px;
 }
+
 #container button {
     margin: 0px 4px;
 }
