@@ -37,8 +37,12 @@ function showElement() {
         const movieElement = document.createElement('div')
         movieElement.setAttribute('id', 'movie-'+i);       
         movieElement.innerHTML = "Nom du film : " + movie.name 
-        + '<i onclick="updateElement('+i+')" class="fa-solid fa-pen"></i>'
-        + '<i onclick="deleteElement('+i+')" class="fa-solid fa-trash"></i>';
+        + '<button onclick="updateElement('+i+')" type="button" class="btn btn-default btn-warning">'
+        + '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'
+        + '</button>'
+        + '<button onclick="deleteElement('+i+')" type="button" class="btn btn-default btn-danger">'
+        + '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'
+        + '</button>';     
         newDiv.appendChild(movieElement);
     })
     
