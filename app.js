@@ -1,17 +1,18 @@
-let catalog = []
 
 function add() {
+    let catalog = getData()
     let movie_name = document.getElementById('movie_name').value
     console.log(movie_name)
     let movie = { name: movie_name }
     console.log(movie)
     catalog.push(movie)
     console.log(catalog)
-    recordData()
+    recordData(catalog)
+    showElement()
 }
 
-function recordData(){
-    localStorage.setItem("kgd_movies_data", JSON.stringify(catalog));
+function recordData(c){
+    localStorage.setItem("kgd_movies_data", JSON.stringify(c));
 }
 
 function getData(){
@@ -21,25 +22,55 @@ function getData(){
 }
 
 
-console.log(catalog)
 
 
 function showElement() {
     const newDiv = document.createElement("div");
     
     let moviesFromLocalStorage = getData()
-        for (const movie of moviesFromLocalStorage) {
-              console.log(movie);
-              // add the text node to the newly created div
-              const HTMLname = document.createTextNode("Nom du film : " + movie.name);
-              const HTMLnote = document.createElement('p');
-              HTMLnote.innerHTML = "Note du film : " + movie.note;
-              HTMLnote.classList.add("note");
-              newDiv.appendChild(HTMLname);
-              newDiv.appendChild(HTMLnote);
-    }
-  
+    console.log(moviesFromLocalStorage)
+    moviesFromLocalStorage.forEach(function (movie, i) {
+    // for (const movie of moviesFromLocalStorage) {
+        console.log(movie);
+
+
+        const movieElement = document.createElement('div')
+        movieElement.setAttribute('id', 'movie-'+i);       
+        movieElement.innerHTML = "Nom du film : " + movie.name 
+        + '<i onclick="updateElement('+i+')" class="fa-solid fa-pen"></i>'
+        + '<i onclick="deleteElement('+i+')" class="fa-solid fa-trash"></i>';
+        newDiv.appendChild(movieElement);
+    })
+    
+    
     const container = document.getElementById("container");
     container.innerHTML = newDiv.innerHTML ;
-  }
+}
+
+
+
+function updateElement(i) {
+
   
+    let moviesFromLocalStorage = getData()
+
+    moviesFromLocalStorage.splice(i , 1, {name : String(prompt('Choisi un nouveau nom'))})
+    
+    recordData(moviesFromLocalStorage)
+
+    showElement()
+}
+
+if(getData() === null){
+    recordData([])
+}
+
+function deleteElement(i) {
+    let moviesFromLocalStorage = getData()
+    moviesFromLocalStorage.splice(i, 1,)
+    recordData(moviesFromLocalStorage)
+    showElement()
+    
+} 
+
+showElement()
